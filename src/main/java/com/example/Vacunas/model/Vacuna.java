@@ -1,4 +1,4 @@
-package com.example.API_REST_Spring_Boot_MYSQL.model;
+package com.example.Vacunas.model;
 
 import javax.persistence.*;
 //Por ejemplo, si queremos que una clase sea persistente en base de datos, 
@@ -7,46 +7,70 @@ import javax.persistence.*;
 //Todos los atributos de la clase anotada con @Entity se guardarán a su vez
 //en base de datos, por lo que no es necesario anotarlos uno a uno
 @Entity
-@Table(name = "users") //nombre de la tabla en la BD
-public class User {
+@Table(name = "vacunas") //nombre de la tabla en la BD
+public class Vacuna {
     
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
-    private String firstName;
-    private String lastName;
-    public User() {
+    private String nombre;
+    private int dosis_pfizer;
+    private int dosis_moderna;
+    private int personas;
+    public Vacuna() {
     }
 
-    public User(int id, String firstName, String lastName) {
+    public Vacuna(int id, String nombre, int dosis_pfizer,int dosis_moderna,int personas) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.nombre = nombre;
+        this.dosis_pfizer = dosis_pfizer;
+        this.dosis_moderna = dosis_moderna;
+        this.personas = personas;
     }
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getDosis_pfizer() {
+		return dosis_pfizer;
+	}
+
+	public void setDosis_pfizer(int dosis_pfizer) {
+		this.dosis_pfizer = dosis_pfizer;
+	}
+
+	public int getDosis_moderna() {
+		return dosis_moderna;
+	}
+
+	public void setDosis_moderna(int dosis_moderna) {
+		this.dosis_moderna = dosis_moderna;
+	}
+
+	public int getPersonas() {
+		return personas;
+	}
+
+	public void setPersonas(int personas) {
+		this.personas = personas;
+	}
    
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public String getFirstName() {
-        return firstName;
-    }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 }

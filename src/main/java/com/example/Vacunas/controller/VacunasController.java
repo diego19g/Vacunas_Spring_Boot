@@ -1,6 +1,7 @@
-package com.example.API_REST_Spring_Boot_MYSQL.controller;
-import com.example.API_REST_Spring_Boot_MYSQL.model.User;
-import com.example.API_REST_Spring_Boot_MYSQL.service.UserService;
+package com.example.Vacunas.controller;
+import com.example.Vacunas.model.Vacuna;
+import com.example.Vacunas.service.VacunasService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,28 +12,28 @@ import java.util.NoSuchElementException;
 
 @RestController
 //OJO la URL seria http://localhost:4008/users/
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/vacunas")
+public class VacunasController {
     @Autowired
-    UserService userService;
+    VacunasService vacunaService;
 
     @GetMapping("")
-    public List<User> list() {
-        return userService.listAllUser();
+    public List<Vacuna> list() {
+        return vacunaService.listAllVacuna();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> get(@PathVariable Integer id) {
+    public ResponseEntity<Vacuna> get(@PathVariable Integer id) {
         try {
-            User user = userService.getUser(id);
-            return new ResponseEntity<User>(user, HttpStatus.OK);
+            Vacuna vacuna = vacunaService.getVacuna(id);
+            return new ResponseEntity<Vacuna>(vacuna, HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Vacuna>(HttpStatus.NOT_FOUND);
         }
     }
     @PostMapping("/insertar")
-    public void add(@RequestBody User user) {
-        userService.saveUser(user);
+    public void add(@RequestBody Vacuna vacuna) {
+    	vacunaService.saveVacuna(vacuna);
     }
     
     // PUT   localhost:4004/users/modificar/1
@@ -41,11 +42,11 @@ public class UserController {
         //"lastName": "Perez Rubiales"
    //}
     @PutMapping("/modificar/{id}")
-    public ResponseEntity<?> update(@RequestBody User user, @PathVariable Integer id) {
+    public ResponseEntity<?> update(@RequestBody Vacuna vacuna, @PathVariable Integer id) {
         try {
-            User existUser = userService.getUser(id);
-            user.setId(id);
-            userService.saveUser(user);
+            Vacuna existVacuna = vacunaService.getVacuna(id);
+            vacuna.setId(id);
+            vacunaService.saveVacuna(vacuna);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -56,32 +57,20 @@ public class UserController {
     @DeleteMapping("/borrar/{id}")
     public void delete(@PathVariable Integer id) {
     	
-        userService.deleteUser(id);
+    	vacunaService.deleteVacuna(id);
     }
-  //http://localhost:4004/users/porapellido/Trigueros Tejada
-    //resuesta:
-    //[{"id":6,"firstName":"Alba","lastName":"Trigueros Tejada"}]
-    @GetMapping("/porapellido/{lastName}")
-    public List<User> getApellido (@PathVariable String lastName)
-    {
-    	return userService.getLastname(lastName);
-     
-    }
+
+    
     //http://localhost:4004/users/pornombre/Ruben
     //resuesta:
     //[{"id":4,"firstName":"Ruben","lastName":"Diaz Silvan"}]
-    @GetMapping("/pornombre/{firstName}")
-    public List<User> getFirstName (@PathVariable String firstName)
+    @GetMapping("/pornombre/{nombre}")
+    public List<Vacuna> getFirstName (@PathVariable String nombre)
     {
-    	return userService.getFirstName(firstName);
+    	return vacunaService.getNombre(nombre);
      
     }
-    @GetMapping("/agrupada_nombre/")
-    public List<Object[]> Consulta_agrupada_nombres ()
-    {
-    	return userService.Agrupar_por_nombre();
-     
-    }
+
     
     
     

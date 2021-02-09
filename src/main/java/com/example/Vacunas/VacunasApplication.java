@@ -1,4 +1,4 @@
-package com.example.API_REST_Spring_Boot_MYSQL;
+package com.example.Vacunas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
-public class ApiRestSpringBootMysqlApplication {
+public class VacunasApplication {
 	
 	@Bean
     public WebMvcConfigurer corsConfigurer() {
@@ -19,7 +19,7 @@ public class ApiRestSpringBootMysqlApplication {
         };
     }
 	public static void main(String[] args) {
-		SpringApplication.run(ApiRestSpringBootMysqlApplication.class, args);
+		SpringApplication.run(VacunasApplication.class, args);
 	}
 
 }
