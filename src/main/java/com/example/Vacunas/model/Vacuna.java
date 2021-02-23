@@ -18,15 +18,17 @@ public class Vacuna {
     private String nombre;
     private int dosis_pfizer;
     private int dosis_moderna;
+    private int dosis_administradas;
     private int personas;
     public Vacuna() {
     }
 
-    public Vacuna(int id, String nombre, int dosis_pfizer,int dosis_moderna,int personas) {
+    public Vacuna(int id, String nombre, int dosis_pfizer,int dosis_moderna,int dosis_administradas,int personas) {
         this.id = id;
         this.nombre = nombre;
         this.dosis_pfizer = dosis_pfizer;
         this.dosis_moderna = dosis_moderna;
+        this.dosis_administradas=dosis_administradas;
         this.personas = personas;
     }
 
@@ -60,6 +62,14 @@ public class Vacuna {
 
 	public void setDosis_moderna(int dosis_moderna) {
 		this.dosis_moderna = dosis_moderna;
+	}		
+
+	public int getDosis_administradas() {
+		return dosis_administradas;
+	}
+
+	public void setDosis_administradas(int dosis_administradas) {
+		this.dosis_administradas = dosis_administradas;
 	}
 
 	public int getPersonas() {

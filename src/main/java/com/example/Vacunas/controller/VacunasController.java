@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-//OJO la URL seria http://localhost:4008/users/
+
 @RequestMapping("/vacunas")
 public class VacunasController {
     @Autowired
@@ -36,11 +36,7 @@ public class VacunasController {
     	vacunaService.saveVacuna(vacuna);
     }
     
-    // PUT   localhost:4004/users/modificar/1
-    //{
-        //"firstName": "Juan",
-        //"lastName": "Perez Rubiales"
-   //}
+  
     @PutMapping("/modificar/{id}")
     public ResponseEntity<?> update(@RequestBody Vacuna vacuna, @PathVariable Integer id) {
         try {
@@ -53,7 +49,7 @@ public class VacunasController {
         }
     }
     
-    // DELETE localhost:4004/users/borrar/5
+
     @DeleteMapping("/borrar/{id}")
     public void delete(@PathVariable Integer id) {
     	
@@ -61,9 +57,7 @@ public class VacunasController {
     }
 
     
-    //http://localhost:4004/users/pornombre/Ruben
-    //resuesta:
-    //[{"id":4,"firstName":"Ruben","lastName":"Diaz Silvan"}]
+
     @GetMapping("/pornombre/{nombre}")
     public List<Vacuna> getFirstName (@PathVariable String nombre)
     {
